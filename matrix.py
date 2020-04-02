@@ -34,3 +34,23 @@ class Matrix():
       new_matrix.append(row_matrix)
     return new_matrix
 
+  def subMatrix(Matrix_object, Matrix_object2):
+    matrix1 = Matrix_object.getMatrix()
+    matrix2 = Matrix_object2.getMatrix()
+    new_matrix = []
+    for x in range(len(matrix1)):
+      row_matrix = []
+      for y in range(len(matrix1[x])):
+        point = matrix1[x][y] - matrix2[x][y]
+        row_matrix.append(point)
+      new_matrix.append(row_matrix)
+    return new_matrix
+  #focusing on matrx multication
+  def multMatrix(Matrix_object, Matrix_object2):
+    matrix1 = Matrix_object.getMatrix()
+    matrix2 = Matrix_object2.getMatrix()
+    new_matrix=[]
+    for x in range(len(matrix1.col)):
+      for y in range(len(matrix1.row)):
+        matrix1[x][y]*matrix2[y][x]
+
