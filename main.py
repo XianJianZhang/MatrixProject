@@ -2,7 +2,8 @@ import matrix
 
 def main():
   print("Hello, welcome to matrix addition and subtraction!")
-  matrix_operation(choice(), organize_input())
+  userChoice = choice()
+  matrix_operation(userChoice, organize_input(userChoice))
 
 #Returns choice of operation by the user
 def choice():
@@ -13,30 +14,38 @@ def choice():
 
 #Performs one of the 3 matrix operations, given two matrices
 def matrix_operation(userChoice, matricesInfo):
-  matrix1 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[2])
-  matrix2 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[3])
   if userChoice == "add":
+    matrix1 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[2])
+    matrix2 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[3])
     print(str(matrix1.getMatrix()) +
           " plus "+ str(matrix2.getMatrix()) + " is " + str(matrix.Matrix.addMatrix(matrix1, matrix2)))
   elif userChoice == "sub":
+    matrix1 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[2])
+    matrix2 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[3])
     print(str(matrix1.getMatrix()) +
           " subtracted by " + str(matrix2.getMatrix()) + " is " + str(matrix.Matrix.subMatrix(matrix1, matrix2)))
-    pass
   else:
-    pass
+    matrix1 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[2])
+    matrix2 = matrix.Matrix(matricesInfo[1], matricesInfo[4], matricesInfo[3])
+    print(matrix1.getMatrix())
+    print(matrix2.getMatrix())
+    print(str(matrix1.getMatrix()) +
+          " multiplied by " + str(matrix2.getMatrix()) + " is " + str(matrix.Matrix.multMatrix(matrix1, matrix2)))
 
-def organize_input():
+def organize_input(choice):
   input1 = []
   input2 = []
-  col = int(input("Enter row for the two matrices: "))
-  row = int(input("Enter col for the two matrices: "))
-  for x in range(col):
-    for y in range(row):
+  row = int(input("Enter row for the two matrices: "))
+  col = int(input("Enter col for the two matrices: "))
+  if choice == "mult":
+    col2 = int(input("Enter number of col for the second matrices (row must be same, so we won't ask you that: "))
+  for x in range(row):
+    for y in range(col):
       userInput = int(input("Enter one number: "))
       input1.append(userInput)
-  for x in range(col):
-    for y in range(row):
+  for x in range(row):
+    for y in range(col2):
       userInput = int(input("Enter one number for the second matrix: "))
       input2.append(userInput)
-  return (row, col,input1, input2)
+  return (row, col,input1, input2, col2)
 main()

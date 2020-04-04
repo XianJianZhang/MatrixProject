@@ -11,11 +11,13 @@ class Matrix():
   #Creates the actual matrix
   def create_matrix(self):
     empty_list = []
+    counter = 0
     for x in range(self.row):
       row_list = []
+      counter = -1
       for y in range(self.col):
-        index = ((x+1)*(y+1))-1
-        row_list.append(self.input_num[index])
+        counter += 1
+        row_list.append(self.input_num[counter])
       empty_list.append(row_list)
     return (empty_list)
 
@@ -45,12 +47,29 @@ class Matrix():
         row_matrix.append(point)
       new_matrix.append(row_matrix)
     return new_matrix
+
   #focusing on matrx multication
   def multMatrix(Matrix_object, Matrix_object2):
     matrix1 = Matrix_object.getMatrix()
     matrix2 = Matrix_object2.getMatrix()
+    reformatted2 = []
     new_matrix=[]
-    for x in range(len(matrix1.col)):
-      for y in range(len(matrix1.row)):
-        matrix1[x][y]*matrix2[y][x]
-
+    print(matrix1)
+    for y in range(Matrix_object2.col):
+      col = []
+      for a in range(Matrix_object2.row):
+        col.append(matrix2[a][y])
+      reformatted2.append(col)
+    for x in range(Matrix_object.row):
+      empty_list = []
+      for y in range(len(reformatted2)):
+        element = 0
+        for z in range(len(reformatted2[0])):
+          element += matrix1[x][z] * reformatted2[y][z]
+        print(empty_list)
+        empty_list.append(element)
+      new_matrix.append(empty_list)
+    return(new_matrix)
+matrix1 = Matrix(2,2,[1,2,3,4])
+matrix2 = Matrix(2,2,[1,2,3,5])
+print(Matrix.multMatrix(matrix1, matrix2))
