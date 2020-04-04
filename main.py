@@ -17,27 +17,27 @@ def matrix_operation(userChoice, matricesInfo):
   if userChoice == "add":
     matrix1 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[2])
     matrix2 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[3])
-    print(str(matrix1.getMatrix()) +
-          " plus "+ str(matrix2.getMatrix()) + " is " + str(matrix.Matrix.addMatrix(matrix1, matrix2)))
+    print(str(matrix1) +
+          " plus "+ str(matrix2) + " is " + str(matrix.Matrix.addMatrix(matrix1, matrix2)))
   elif userChoice == "sub":
     matrix1 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[2])
     matrix2 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[3])
-    print(str(matrix1.getMatrix()) +
-          " subtracted by " + str(matrix2.getMatrix()) + " is " + str(matrix.Matrix.subMatrix(matrix1, matrix2)))
+    print(str(matrix1) +
+          " subtracted by " + str(matrix2) + " is " + str(matrix.Matrix.subMatrix(matrix1, matrix2)))
   else:
     matrix1 = matrix.Matrix(matricesInfo[0], matricesInfo[1], matricesInfo[2])
     matrix2 = matrix.Matrix(matricesInfo[1], matricesInfo[4], matricesInfo[3])
-    print(matrix1.getMatrix())
-    print(matrix2.getMatrix())
-    print(str(matrix1.getMatrix()) +
-          " multiplied by " + str(matrix2.getMatrix()) + " is " + str(matrix.Matrix.multMatrix(matrix1, matrix2)))
+    print(str(matrix1) +
+          " multiplied by " + str(matrix2) + " is " + str(matrix.Matrix.multMatrix(matrix1, matrix2)))
 
 def organize_input(choice):
   input1 = []
   input2 = []
   row = int(input("Enter row for the two matrices: "))
   col = int(input("Enter col for the two matrices: "))
-  if choice == "mult":
+  if choice != "mult":
+    col2 = col
+  elif choice == "mult":
     col2 = int(input("Enter number of col for the second matrices (row must be same, so we won't ask you that: "))
   for x in range(row):
     for y in range(col):

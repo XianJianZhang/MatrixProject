@@ -5,16 +5,21 @@ class Matrix():
     self.input_num = input_num
     self.matrix = Matrix.create_matrix(self)
 
-  def __repr__(self):
-    return Matrix.getMatrix()
-
+  def __str__(self):
+    border = ""
+    for x in range(len(self.matrix)):
+      border += "-"
+    formatted = ""
+    for x in range(len(self.matrix)):
+      formatted += "\n" + str(self.matrix[x])
+    formatted = str(formatted)
+    return "\n"+border+str(formatted)
   #Creates the actual matrix
   def create_matrix(self):
     empty_list = []
-    counter = 0
+    counter = -1
     for x in range(self.row):
       row_list = []
-      counter = -1
       for y in range(self.col):
         counter += 1
         row_list.append(self.input_num[counter])
@@ -34,7 +39,8 @@ class Matrix():
         point = matrix1[x][y]+ matrix2[x][y]
         row_matrix.append(point)
       new_matrix.append(row_matrix)
-    return new_matrix
+    matrix3 = Matrix(Matrix_object.row, Matrix_object.col, Matrix.toList(new_matrix))
+    return matrix3
 
   def subMatrix(Matrix_object, Matrix_object2):
     matrix1 = Matrix_object.getMatrix()
@@ -46,7 +52,8 @@ class Matrix():
         point = matrix1[x][y] - matrix2[x][y]
         row_matrix.append(point)
       new_matrix.append(row_matrix)
-    return new_matrix
+    matrix3 = Matrix(Matrix_object.row, Matrix_object.col, Matrix.toList(new_matrix))
+    return matrix3
 
   #focusing on matrx multication
   def multMatrix(Matrix_object, Matrix_object2):
@@ -54,7 +61,6 @@ class Matrix():
     matrix2 = Matrix_object2.getMatrix()
     reformatted2 = []
     new_matrix=[]
-    print(matrix1)
     for y in range(Matrix_object2.col):
       col = []
       for a in range(Matrix_object2.row):
@@ -66,10 +72,18 @@ class Matrix():
         element = 0
         for z in range(len(reformatted2[0])):
           element += matrix1[x][z] * reformatted2[y][z]
-        print(empty_list)
         empty_list.append(element)
       new_matrix.append(empty_list)
-    return(new_matrix)
-matrix1 = Matrix(2,2,[1,2,3,4])
-matrix2 = Matrix(2,2,[1,2,3,5])
-print(Matrix.multMatrix(matrix1, matrix2))
+    matrix3 = Matrix(Matrix_object.row, Matrix_object2.col, Matrix.toList(new_matrix))
+    return matrix3
+
+  def toList(matrixFormat):
+    returnList = []
+    for x in range(len(matrixFormat)):
+      for y in range(len(matrixFormat[0])):
+        returnList.append(matrixFormat[x][y])
+    return returnList
+
+# matrix1 = Matrix(2,2,[2,2,2,2])
+# matrix2 = Matrix(2,2,[2,3,3,2])
+# print(Matrix.addMatrix(matrix1, matrix2))
