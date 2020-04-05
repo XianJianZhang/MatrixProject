@@ -43,7 +43,7 @@ def organize_input(choice):
     for y in range(col):
       userInput = int(input("Enter one number: "))
       input1.append(userInput)
-  for x in range(row):
+  for x in range(col):
     for y in range(col2):
       userInput = int(input("Enter one number for the second matrix: "))
       input2.append(userInput)

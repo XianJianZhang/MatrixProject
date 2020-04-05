@@ -18,6 +18,8 @@ class Matrix():
   def create_matrix(self):
     empty_list = []
     counter = -1
+    print(self.row, self.col)
+    print(self.input_num)
     for x in range(self.row):
       row_list = []
       for y in range(self.col):
